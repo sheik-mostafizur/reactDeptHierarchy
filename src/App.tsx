@@ -1,7 +1,10 @@
+import FirstPage from "./components/FirstPage";
+
+
 function App() {
   return (
     <>
-      <h1>Setup Using Material UI</h1>
+    <FirstPage/>
     </>
   );
 }
