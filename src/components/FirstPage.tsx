@@ -34,6 +34,8 @@ const FirstPage = () => {
       style={{
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
         height: "100vh",
       }}>
       {location.state && location.state.message && (

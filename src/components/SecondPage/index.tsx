@@ -1,12 +1,11 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
-import {Button, Container, Typography} from "@mui/material";
+import { Container, Grid, Typography} from "@mui/material";
 import FetchListData from "./FetchListData";
 import DepartmentList from "./DepartmentList";
 
 const SecondPage = () => {
   const navigate = useNavigate();
-  const [isShowFetchListData, setIsShowFetchListData] = useState(true);
 
   useEffect(() => {
     // Retrieve user details from local storage
@@ -19,19 +18,20 @@ const SecondPage = () => {
     }
   }, [navigate]);
 
-  const handleShowData = () => setIsShowFetchListData(!isShowFetchListData);
-
   return (
     <Container>
       <Typography variant="h5" component="h2" gutterBottom>
-        <Button variant="contained" onClick={handleShowData}>
-          {isShowFetchListData
-            ? "Show Department Data"
-            : "Show Fetch List Of Data"}
-        </Button>
+        <h5>Department Data and Fetch List of Data</h5>
       </Typography>
 
-      {isShowFetchListData ? <FetchListData /> : <DepartmentList />}
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <DepartmentList />
+        </Grid>
+        <Grid item xs={8}>
+          <FetchListData />
+        </Grid>
+      </Grid>
     </Container>
   );
 };

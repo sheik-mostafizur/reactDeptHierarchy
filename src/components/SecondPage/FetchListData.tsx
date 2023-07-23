@@ -35,7 +35,7 @@ const FetchListData = () => {
   if (isLoading) {
     return <CircularProgress />;
   }
-  
+
   return (
     <div style={{height: 600, width: "100%"}}>
       <DataGrid rows={posts} columns={columns} checkboxSelection />
