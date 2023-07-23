@@ -1,14 +1,17 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {DataGrid, GridColDef} from "@mui/x-data-grid";
+import {CircularProgress} from "@mui/material";
+
 interface Post {
   id: number;
   title: string;
   body: string;
 }
 
-const JSONData = () => {
+const FetchListData = () => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Fetch the data from the API (example: https://jsonplaceholder.typicode.com/posts)
@@ -16,6 +19,7 @@ const JSONData = () => {
       .get<Post[]>("https://jsonplaceholder.typicode.com/posts")
       .then((response) => {
         setPosts(response.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -28,6 +32,10 @@ const JSONData = () => {
     {field: "body", headerName: "Body", width: 400},
   ];
 
+  if (isLoading) {
+    return <CircularProgress />;
+  }
+  
   return (
     <div style={{height: 600, width: "100%"}}>
       <DataGrid rows={posts} columns={columns} checkboxSelection />
@@ -35,4 +43,4 @@ const JSONData = () => {
   );
 };
 
-export default JSONData;
+export default FetchListData;

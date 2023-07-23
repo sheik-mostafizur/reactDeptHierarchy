@@ -29,15 +29,21 @@ const FirstPage = () => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container
+      maxWidth="sm"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        height: "100vh",
+      }}>
       {location.state && location.state.message && (
-        <Typography variant="subtitle1" color="error" gutterBottom>
+        <Typography variant="h6" color="error" gutterBottom>
           {location.state.message}
         </Typography>
       )}
       <form onSubmit={handleSubmit}>
         <Typography variant="h5" component="h2" gutterBottom>
-          User Information
+          Fill Up Your Information
         </Typography>
 
         <TextField
